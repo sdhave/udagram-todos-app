@@ -83,7 +83,7 @@ const deletePost = async (event) => {
     // Parameters for deleting item
     const params = {
       TableName: process.env.DYNAMODB_TABLE_NAME,
-      Key: event.pathParameters.postId
+      Key: { postId: event.pathParameters.postId }
     }
     // Deleting the item for db
     const deletedItem = await db.delete(params).promise()
