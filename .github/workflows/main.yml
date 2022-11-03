@@ -11,18 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
       - name: Use Nodejs 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Serverless deploy
         uses: serverless/github-actions@master
