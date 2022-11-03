@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/sdhave/udagram-todos-app/issues"
   },
-  "homepage": "https://github.com/sdhave/udagram-todos-app#readme"
+  "homepage": "https://github.com/sdhave/udagram-todos-app#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1246.0",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "uuid": "^9.0.0"
+  }
 }

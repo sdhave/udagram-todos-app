@@ -1,0 +1,72 @@
+org: sdhave
+service: dynamodb-crud-api
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+  environment:
+    DYNAMODB_TABLE_NAME: ${self:custom.postsTableName}
+
+custom:
+  postsTableName: posts-table-${self:provider.stage}
+
+plugins:
+  - serverless-webpack
+  - serverless-iam-roles-per-function
+
+functions:
+  getPosts:
+    handler: api.getPosts
+    name: get-post
+    events:
+      - http:
+          path: posts
+          method: GET
+          cors: true
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:Scan"
+        Resource: !GetAtt PostsTable.Arn
+    createPost:
+      handler: api.createPost
+      name: create-post
+      events:
+        - http:
+            path: create-post
+            method: POST
+            cors: true
+      iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:Put"
+          Resource: !GetAtt PostsTable.Arn
+    deletePost:
+      handler: api.deletePost
+      name: delete-post
+      events:
+        - http:
+            path: delete-post/{postId}
+            method: DELETE
+            cors: true
+      iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:Delete"
+          Resource: !GetAtt PostsTable.Arn
+
+resources:
+  Resources:
+    PostsTable:
+      Type: AWS::DynamoDB::TableName
+      Properties:
+        AttributesDefinitions:
+          - AttributeName: postId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: postId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.postsTableName}
