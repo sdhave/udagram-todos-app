@@ -115,10 +115,12 @@ const updatePost = async (event) => {
   try {
     // Get the rest of the data
     const body = JSON.parse(event.body)
+    // Get post id from Parameters
+    const postId = event.pathParameters.postId
     // Parameters for adding item to db
     const params = {
       TableName: process.env.DYNAMODB_TABLE_NAME,
-      Key: { postId: event.pathParameters.postId },
+      Key: postId,
       Item: { postId, ...body }
     }
     // Adding the new item to the database
