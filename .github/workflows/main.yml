@@ -9,15 +9,7 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Nodejs 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-
-      - name: Install dependencies
-        run: npm install
+      - uses: actions/checkout@v3
 
       - name: Serverless deploy
         uses: serverless/github-actions@master
