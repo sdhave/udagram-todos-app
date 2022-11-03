@@ -19,6 +19,7 @@
   "dependencies": {
     "aws-sdk": "^2.1246.0",
     "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-webpack": "^5.10.0",
     "uuid": "^9.0.0"
   }
 }
