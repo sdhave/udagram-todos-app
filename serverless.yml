@@ -13,7 +13,6 @@ custom:
   postsTableName: posts-table-${self:provider.stage}
 
 plugins:
-  - serverless-webpack
   - serverless-iam-roles-per-function
 
 functions:
