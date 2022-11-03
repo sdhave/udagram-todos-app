@@ -29,6 +29,7 @@ functions:
         Action:
           - "dynamodb:Scan"
         Resource: !GetAtt PostsTable.Arn
+
     createPost:
       handler: api.createPost
       name: create-post
@@ -42,6 +43,7 @@ functions:
           Action:
             - "dynamodb:Put"
           Resource: !GetAtt PostsTable.Arn
+
     deletePost:
       handler: api.deletePost
       name: delete-post
@@ -59,7 +61,7 @@ functions:
 resources:
   Resources:
     PostsTable:
-      Type: AWS::DynamoDB::TableName
+      Type: AWS::DynamoDB::Table
       Properties:
         AttributesDefinitions:
           - AttributeName: postId
