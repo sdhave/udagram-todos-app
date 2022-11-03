@@ -39,12 +39,12 @@ const createPost = async (event) => {
 
   try {
     // Generate a unique ID
-    const postId = uuid.v4()
+    const id = uuid.v4()
     // Get the rest of the data
     const body = JSON.parse(event.body)
     // Create the new item
     const newItem = {
-      id: postId,
+      postId: id,
       ...body
     }
     // Parameters for adding item to db
