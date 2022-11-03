@@ -119,7 +119,7 @@ const updatePost = async (event) => {
     const params = {
       TableName: process.env.DYNAMODB_TABLE_NAME,
       Key: { postId: event.pathParameters.postId },
-      Item: { body }
+      Item: { postId, ...body }
     }
     // Adding the new item to the database
     await db.put(params).promise()
