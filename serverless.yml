@@ -30,40 +30,40 @@ functions:
           - "dynamodb:Scan"
         Resource: !GetAtt PostsTable.Arn
 
-    createPost:
-      handler: api.createPost
-      name: create-post
-      events:
-        - http:
-            path: create-post
-            method: POST
-            cors: true
-      iamRoleStatements:
-        - Effect: "Allow"
-          Action:
-            - "dynamodb:Put"
-          Resource: !GetAtt PostsTable.Arn
+  createPost:
+    handler: api.createPost
+    name: create-post
+    events:
+      - http:
+          path: create-post
+          method: POST
+          cors: true
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:Put"
+        Resource: !GetAtt PostsTable.Arn
 
-    deletePost:
-      handler: api.deletePost
-      name: delete-post
-      events:
-        - http:
-            path: delete-post/{postId}
-            method: DELETE
-            cors: true
-      iamRoleStatements:
-        - Effect: "Allow"
-          Action:
-            - "dynamodb:Delete"
-          Resource: !GetAtt PostsTable.Arn
+  deletePost:
+    handler: api.deletePost
+    name: delete-post
+    events:
+      - http:
+          path: delete-post/{postId}
+          method: DELETE
+          cors: true
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:Delete"
+        Resource: !GetAtt PostsTable.Arn
 
 resources:
   Resources:
     PostsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        AttributesDefinitions:
+        AttributeDefinitions:
           - AttributeName: postId
             AttributeType: S
         KeySchema:
