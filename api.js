@@ -108,4 +108,40 @@ const deletePost = async (event) => {
   return response;
 }
 
-module.exports = { getPosts, createPost, deletePost }
+const updatePost = async (event) => {
+  // Setting the success status code
+  const response = { statusCode: 200 }
+
+  try {
+    // Get the rest of the data
+    const body = JSON.parse(event.body)
+    // Parameters for adding item to db
+    const params = {
+      TableName: process.env.DYNAMODB_TABLE_NAME,
+      Key: { postId: event.pathParameters.postId },
+      Item: { body }
+    }
+    // Adding the new item to the database
+    await db.put(params).promise()
+    // Response body for success
+    response.body = JSON.stringify({
+      message: "Successfully Updated Post",
+    })
+
+  } catch (e) {
+    console.error(e)
+    // Resetting the status code for
+    response.statusCode = 500
+    // Response body for failed
+    response.body = JSON.stringify({
+      message: "Failed to Update Post",
+      errorMsg: e.message,
+      errorStack: e.stack
+    })
+  }
+
+  return response;
+}
+
+
+module.exports = { getPosts, createPost, deletePost, updatePost }

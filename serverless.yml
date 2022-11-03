@@ -58,6 +58,20 @@ functions:
           - "dynamodb:DeleteItem"
         Resource: !GetAtt PostsTable.Arn
 
+  updatePost:
+    handler: api.updatePost
+    name: update-post
+    events:
+      - http:
+          path: update-post/{postId}
+          method: PUT
+          cors: true
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:PutItem"
+        Resource: !GetAtt PostsTable.Arn
+
 resources:
   Resources:
     PostsTable:
