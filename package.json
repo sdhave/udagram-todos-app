@@ -1,0 +1,19 @@
+{
+  "name": "udagram-todos-app",
+  "version": "1.0.0",
+  "description": "Udacity Project 4 - Serverless App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdhave/udagram-todos-app.git"
+  },
+  "author": "Simbarashe Mapipi Dhave",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdhave/udagram-todos-app/issues"
+  },
+  "homepage": "https://github.com/sdhave/udagram-todos-app#readme"
+}
