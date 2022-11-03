@@ -41,7 +41,7 @@ functions:
     iamRoleStatements:
       - Effect: "Allow"
         Action:
-          - "dynamodb:Put"
+          - "dynamodb:PutItem"
         Resource: !GetAtt PostsTable.Arn
 
   deletePost:
@@ -55,7 +55,7 @@ functions:
     iamRoleStatements:
       - Effect: "Allow"
         Action:
-          - "dynamodb:Delete"
+          - "dynamodb:DeleteItem"
         Resource: !GetAtt PostsTable.Arn
 
 resources:
