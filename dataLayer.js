@@ -13,4 +13,4 @@ class PostsAccess {
   }
 }
 
-module.exports = PostsAccess
+module.exports = { PostsAccess }

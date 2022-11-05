@@ -1,4 +1,4 @@
-const PostsAccess = require("./PostsAccess")
+const { PostsAccess } = require("./PostsAccess")
 
 const postsAccess = new PostsAccess()
 
