@@ -8,6 +8,7 @@ const getPosts = async (event) => {
   const response = { statusCode: 200 }
 
   try {
+    "use strict"
     const Items = getAllPosts()
     // Response for success
     response.body = JSON.stringify({
