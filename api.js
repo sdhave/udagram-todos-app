@@ -3,6 +3,7 @@ const uuid = require('uuid')
 const { getAllPosts } = require("./businessLogic")
 
 const getPosts = async (event) => {
+  "use strict"
   // Setting the status code
   const response = { statusCode: 200 }
 
