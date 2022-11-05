@@ -1,4 +1,4 @@
-const { PostsAccess } = require("./PostsAccess")
+const { PostsAccess } = require("./dataLayer")
 
 const postsAccess = new PostsAccess()
 
