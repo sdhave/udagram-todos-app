@@ -1,17 +1,13 @@
 const db = require("./db")
 const uuid = require('uuid')
+const { getAllPosts } = require("./businessLogic")
 
 const getPosts = async (event) => {
   // Setting the status code
   const response = { statusCode: 200 }
 
   try {
-    // Parameters for getting all items
-    const params = {
-      TableName: process.env.DYNAMODB_TABLE_NAME,
-    }
-    // Getting all items
-    const { Items } = await db.scan(params).promise()
+    const Items = getAllPosts()
     // Response for success
     response.body = JSON.stringify({
       message: "Successfully Executed",
@@ -144,6 +140,5 @@ const updatePost = async (event) => {
 
   return response;
 }
-
 
 module.exports = { getPosts, createPost, deletePost, updatePost }
