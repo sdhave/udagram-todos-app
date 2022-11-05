@@ -1,3 +1,5 @@
+"use strict"
+
 const { PostsAccess } = require("./dataLayer")
 
 const postsAccess = new PostsAccess()
