@@ -1,15 +1,16 @@
-"use strict"
 const db = require("./db")
 const uuid = require('uuid')
-const { getAllPosts } = require("./businessLogic")
 
 const getPosts = async (event) => {
   // Setting the status code
   const response = { statusCode: 200 }
 
   try {
-    "use strict"
-    const Items = getAllPosts()
+    const params = {
+      TableName: process.env.DYNAMODB_TABLE_NAME
+    }
+    // Adding the new item to the database
+    const { Items } = await db.scan(params).promise()
     // Response for success
     response.body = JSON.stringify({
       message: "Successfully Executed",
